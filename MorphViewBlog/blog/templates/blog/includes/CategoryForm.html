@@ -1,0 +1,15 @@
+<div class="category-create-form-container">
+<form action="{% url 'create-category' %}" method="post">
+    <div class="form-group category-form-container">
+        {{ category_form.media }}
+        {% csrf_token %}
+
+        {% for f in category_form %}
+        <p class="category-p category-p"><label class="category-label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</p>
+        <div>{{ f.errors }}</div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Подтвердить</button>
+    </div>
+
+</form>
+</div>

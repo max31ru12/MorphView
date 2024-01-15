@@ -1,0 +1,96 @@
+html {
+    height: auto;
+}
+
+header {
+    font-size: 24px; /* Установите желаемый размер шрифта */
+    font-weight: bold;
+    padding: 20px 5%;
+}
+
+.article-label {
+    width: 170px;
+}
+
+body {
+    background-color: #fff; /* Светло-серый фон */
+    /* padding: 20px; */
+    height: auto;
+}
+
+main {
+    padding: 0 20px;
+}
+
+.nav-links {
+    width: 60%;
+    margin: auto;
+}
+
+/* footer */
+footer {
+    margin-top: 40px;
+}
+
+.social:hover {
+    text-decoration: none;
+}
+
+.social-img {
+    max-width: 100%; /* Максимальная ширина изображения равна ширине контейнера */
+    height: 24px;    /* Высота автоматически рассчитывается для сохранения пропорций */
+}
+
+/* Опционально: добавляем отступы между изображениями */
+.me-4 {
+    margin-right: 1rem; /* Вы можете изменить значение, чтобы подобрать желаемый отступ */
+}
+
+/* footer */
+
+
+.article-create-form-container .cat-list-container {
+    max-width: 80wv;
+    margin: auto; /* Центрирование по горизонтали */
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px; /* Закругленные углы */
+    background-color: #fff; /* Белый фон */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+.article-p {
+    margin-bottom: 15px;
+}
+
+.article-label {
+    font-weight: bold;
+}
+
+@media (max-width: 576px) {
+    /* Стили для мобильных устройств */
+    .article-create-form-container {
+        margin-top: 50px; /* Добавление отступа сверху на мобильных устройствах */
+    }
+}
+
+.article-form-title {
+    margin-bottom: 20px;
+}
+
+
+
+.article-p {
+    display: flex;
+    align-items: center;
+}
+
+.article-label {
+    width: 120px;
+    margin-right: 10px; /* Добавьте отступ справа по вашему усмотрению */
+}
+
+.article-p div {
+    margin-left: auto; /* Помещает блок с ошибками в конец .login-p */
+}
+

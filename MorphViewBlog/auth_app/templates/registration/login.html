@@ -1,0 +1,41 @@
+{% extends 'auth_app/BaseAuth.html' %}
+
+{% block content %}
+
+<div class="login-form-container">
+    <h2 class="auth-form-title">Войти</h2>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    {# <form action="{% url 'auth_app:login' %}?next={{ previous_path }}" method="post"> #}
+        {% if previous_path %}
+        <form action="{% url 'auth_app:login' %}?next={{ previous_path }}" method="post">
+            {% else %}
+            <form action="" method="post">
+                {% endif %}
+                <div class="form-group">
+                    {% csrf_token %}
+
+                    {% for f in form %}
+                    <p class="login-p"><label class="login-label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</p>
+                    <div>{{ f.errors }}</div>
+                    {% endfor %}
+
+                    <button type="submit" class="btn btn-primary">Подтвердить</button>
+                </div>
+            </form>
+
+            <a href="{% url 'auth_app:password_reset' %}">Забыли пароль?</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function(){
+      // Изменяем текст label
+      $('label[for="id_username"]').text('Имя пользователя');
+      $('label[for="id_password"]').text('Пароль');
+    });
+
+</script>
+
+{% endblock %}

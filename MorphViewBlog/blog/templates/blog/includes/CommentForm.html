@@ -1,0 +1,16 @@
+<div class="comment-form-container">
+<form action="{% url 'comment' article_slug %}" method="post">
+    <div class="form-group category-form-container">
+        <h2 class="comment-form-title">Оставить комментарий</h2>
+        {{ comment_form.media }}
+        {% csrf_token %}
+
+        {% for f in comment_form %}
+        <p class="category-p">{{ f }}</p>
+        <div>{{ f.errors }}</div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Прокомментировать</button>
+    </div>
+
+</form>
+</div>

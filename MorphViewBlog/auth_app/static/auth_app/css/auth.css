@@ -1,0 +1,83 @@
+header {
+    font-size: 24px; /* Установите желаемый размер шрифта */
+}
+
+.login-label {
+    width: 170px;
+}
+
+body {
+    background-color: #f8f9fa; /* Светло-серый фон */
+    /* padding: 20px; */
+}
+
+main {
+    min-height: 56vh;
+}
+
+.login-form-container {
+    max-width: 400px;
+    margin: auto; /* Центрирование по горизонтали */
+    margin-top: 12vh;
+
+    padding: 20px;
+    border-radius: 10px; /* Закругленные углы */
+    background-color: #fff; /* Белый фон */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+.login-p {
+    margin-bottom: 15px;
+}
+
+.login-label {
+    font-weight: bold;
+}
+
+@media (max-width: 576px) {
+    /* Стили для мобильных устройств */
+    .login-form-container {
+        margin-top: 50px; /* Добавление отступа сверху на мобильных устройствах */
+    }
+}
+
+.auth-form-title {
+    margin-bottom: 20px;
+}
+
+
+
+.auth-p {
+    display: flex;
+    align-items: center;
+}
+
+.auth-label {
+    width: 120px;
+    margin-right: 10px; /* Добавьте отступ справа по вашему усмотрению */
+}
+
+.auth-p div {
+    margin-left: auto; /* Помещает блок с ошибками в конец .login-p */
+}
+
+
+
+.reset-info-container {
+    width: 60%;
+    margin: auto; /* Центрирование по горизонтали */
+    margin-top: 12vh;
+    padding: 20px;
+    border-radius: 10px; /* Закругленные углы */
+    background-color: #fff; /* Белый фон */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+.reset-info-title {
+    margin-bottom: 20px;
+}
+
+
+
+
+

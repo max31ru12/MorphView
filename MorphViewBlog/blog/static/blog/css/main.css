@@ -1,0 +1,30 @@
+.ad-container {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin: 20px auto;
+  width: 60%;
+}
+
+.jumbotron {
+    padding: 4rem 2rem 3rem 2rem;
+    margin-bottom: 0rem;
+}
+
+.main-card-title {
+    margin: 1rem;
+}
+
+.cat-card-title {
+    margin-bottom: 20px;
+}
+
+.card {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+
+

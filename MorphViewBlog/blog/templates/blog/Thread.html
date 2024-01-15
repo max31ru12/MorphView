@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+  <div class="article-list-container">
+    {% for article in articles %}
+      <div class="article-card">
+        <h2>{{ article.title }}</h2>
+        <p class="article-info">{{ article.publish|date:"F d, Y" }} | Категория:
+          <a href="{{ article.category.get_absolute_url }}">{{ article.category.name }}</a>
+        </p>
+        <div class="article-body">{{ article.body|truncatewords:30|safe }}</div>
+        <div class="d-flex justify-content-between w-100">
+          <a href="{{ article.get_absolute_url }}">Читать далее</a>
+          {% if user.is_staff %}
+          <a href="{% url 'edit-article' article.slug %}">Править</a>
+          {% endif %}
+        </div>
+
+      </div>
+    {% endfor %}
+    {% include "blog/includes/pagination.html" with page=page_obj %}
+  </div>
+
+{% endblock %}

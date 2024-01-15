@@ -1,0 +1,22 @@
+{% extends 'blog/Base.html' %}
+
+{% block content %}
+<div class="article-detail-container">
+    <h1>{{ article.title }}</h1>
+    <p class="article-info">{{ article.publish|date:"F d, Y" }} | Категория:
+        <a href="{{ article.category.get_absolute_url }}">{{ article.category.name }}</a>
+    </p>
+    <div class="article-body">{{ article.body|safe }}</div>
+    {% if user.is_staff %}
+    <a href="{% url 'edit-article' article.slug %}">Править</a>
+    {% endif %}
+</div>
+
+<div class="comment-container">
+    {% include 'blog/includes/CommentForm.html' %}
+</div>
+
+<div class="article-detail-container">
+    {{ comments }}
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'blog/Base.html' %}
+
+{% block content %}
+<div class="form-list-container">
+    <div class="form-card">
+        <h2 class="form-title">Написать статью</h2>
+        {% include 'blog/includes/ArticleForm.html' %}
+        <h2 class="form-title">Создать категорию</h2>
+        {% include 'blog/includes/CategoryForm.html' %}
+    </div>
+</div>
+{% endblock %}
