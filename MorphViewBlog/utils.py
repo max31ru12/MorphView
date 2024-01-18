@@ -1,5 +1,6 @@
 from services import is_staff
 from django.contrib.auth.mixins import AccessMixin
+from MorphViewBlog.settings import DEBUG
 
 menu = [
     {'title': 'Главная', 'url_name': 'base'},
@@ -41,10 +42,7 @@ class DataMixin:
         if is_staff(self.request.user):
             if create_menu not in menu:
                 menu.append(create_menu)
-            if admin_menu not in menu:
-                menu.append(admin_menu)
-        elif admin_menu and create_menu in menu:
-            menu.remove(admin_menu)
+        elif create_menu in menu:
             menu.remove(create_menu)
 
         context['menu'] = menu

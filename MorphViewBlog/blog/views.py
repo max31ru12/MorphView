@@ -10,6 +10,7 @@ from utils import DataMixin, StaffRequiredMixin
 from .forms import ArticleAdminForm, CategoryForm, CommentForm
 from django.views.generic import TemplateView, CreateView, ListView, DetailView, UpdateView
 from .models import *
+from django.core.cache import cache
 
 
 class MainPage(DataMixin, TemplateView):
@@ -18,12 +19,10 @@ class MainPage(DataMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         mixin_context = super().get_user_context(page_title='Главная')
-        two_latest = fetch_latest(Article.objects, sort_field='-publish', limit=2)
+        two_latest = fetch_latest(Article.objects.filter(is_published=True), sort_field='-publish', limit=2)
         context['latest'] = two_latest
-        # Вот этот код получает 3 последние категории
         categories_with_article_count = Category.objects.annotate(article_count=Count('article_category'))
         context['popular'] = categories_with_article_count.order_by('-article_count')[:3]
-        # и я не ебу, как он работает
         return {**context, **mixin_context}
 
 
@@ -62,12 +61,24 @@ class ArticleEditView(StaffRequiredMixin, DataMixin, UpdateView):
 class CategoryCreateView(CreateView):
     form_class = CategoryForm
 
+    def form_valid(self, form):
+        cache.delete('cats')
+        return super().form_valid(form)
+
 
 class CategoryListView(DataMixin, ListView):
     template_name = "blog/Categories.html"
-    queryset = get_all_objects(Category.objects, only=('name',))
     context_object_name = "categories"
     paginate_by = 10
+
+    def get_queryset(self):
+        cats = cache.get('cats')
+        if cats:
+            queryset = cats
+        else:
+            queryset = annotate(Category.objects, article_count=Count('article_category')).order_by('-article_count')
+            cache.set('cats', queryset, 3600)
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -77,7 +88,7 @@ class CategoryListView(DataMixin, ListView):
 
 class ThreadView(DataMixin, ListView):
     template_name = "blog/Thread.html"
-    queryset = fetch_latest(Article.objects, sort_field='-publish')
+    queryset = fetch_latest(Article.objects, sort_field='-publish').select_related('category').filter(is_published=True)
     context_object_name = "articles"
     paginate_by = 5
 
@@ -96,7 +107,7 @@ class ArticleDetailView(DataMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['comment_form'] = CommentForm()
-        context['comments'] = fetch_latest(self.object.comments, sort_field='-created')
+        context['comments'] = fetch_latest(self.object.comments.select_related('user'), sort_field='-created')
         context['article_slug'] = self.object.slug
         mixin_context = super().get_user_context(page_title=self.object)
         return {**context, **mixin_context}
@@ -110,7 +121,7 @@ class CategoryDetailView(DataMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['articles'] = fetch_latest(filter_objects(Article.objects,
+        context['articles'] = fetch_latest(filter_objects(Article.objects.filter(is_published=True),
                                                           category=self.object.id),
                                            sort_field='-publish')
         mixin_context = super().get_user_context(page_title=self.object)

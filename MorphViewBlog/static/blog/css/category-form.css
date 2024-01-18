@@ -1,0 +1,57 @@
+.form-list-container {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.form-title {
+    margin: 10px 0;
+}
+
+.form-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin: 20px auto;
+  width: 60%;
+}
+
+
+.category-create-form-container {
+    max-width: 80wv;
+    margin: auto; /* Центрирование по горизонтали */
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px; /* Закругленные углы */
+    background-color: #fff; /* Белый фон */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+@media (max-width: 576px) {
+    /* Стили для мобильных устройств */
+    .article-create-form-container {
+        margin-top: 50px; /* Добавление отступа сверху на мобильных устройствах */
+    }
+}
+
+.category-form-title {
+    margin-bottom: 20px;
+}
+
+.category-p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.category-label {
+    width: 120px;
+    margin-right: 10px; /* Добавьте отступ справа по вашему усмотрению */
+    font-weight: bold;
+}
+
+.category-p div {
+    margin-left: auto; /* Помещает блок с ошибками в конец .login-p */
+}
+

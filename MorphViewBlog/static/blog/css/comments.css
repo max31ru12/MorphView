@@ -1,0 +1,31 @@
+/* Форма комментариев */
+
+.comment-form-container {
+    max-width: 80wv;
+    margin: auto; /* Центрирование по горизонтали */
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px; /* Закругленные углы */
+    background-color: #fff; /* Белый фон */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+
+/*  */
+.comment-container {
+    width: 60%;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.comment-form-title {
+    margin-bottom: 10px;
+}
+
+.comment-label {
+    width: 0px;
+    margin-right: 10px; /* Добавьте отступ справа по вашему усмотрению */
+    font-weight: bold;
+}

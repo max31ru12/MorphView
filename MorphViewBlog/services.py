@@ -3,6 +3,7 @@ from unidecode import unidecode
 import re
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.cache import cache
 
 
 def custom_slugify(text: models.CharField) -> str:
@@ -35,10 +36,31 @@ def only_decorator(func: callable):
     return wrapper
 
 
+def cache_decorator(func: callable):
+    def wrapper(objects, cache_key: str = "", cache_time: int = 0, *args, **kwargs):
+        cached_value = cache.get(cache_key)
+        if cached_value:
+            queryset = cached_value
+        else:
+            print('return queryset')
+            queryset = func(objects, *args, **kwargs)
+            cache.set(cache_key, queryset, cache_time)
+        return queryset
+    return wrapper
+
+
 @limit_decorator
 @only_decorator
 def get_all_objects(objects):
     return objects.all()
+
+
+def annotate(objects, **kwargs):
+    return objects.annotate(**kwargs)
+
+
+def order(queryset, *args):
+    return queryset.order_by(*args)
 
 
 @only_decorator

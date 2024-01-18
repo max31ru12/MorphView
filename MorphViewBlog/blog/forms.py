@@ -9,7 +9,7 @@ class ArticleAdminForm(forms.ModelForm):
 
     class Meta:
         model = Article
-        fields = ('title', 'body', 'category')
+        fields = ('title', 'body', 'category', 'is_published')
         labels = {
             'title': 'Название',
             'category': 'Категория'

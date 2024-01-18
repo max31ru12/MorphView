@@ -1,4 +1,6 @@
-import sys, os
+import os
+import sys
+
 # Этот импорт нужен импорта сервисов
 sys.path.append(os.path.join(os.getcwd(), '..'))
 
@@ -31,13 +33,13 @@ class Category(models.Model):
 
 
 class Article(models.Model):
-
     title = models.CharField(max_length=265)
     slug = models.SlugField(max_length=256)
     publish = models.DateTimeField(auto_now_add=True)
     edited = models.DateTimeField(auto_now=True, null=True, blank=True)
     body = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.PROTECT, related_name="article_category")
+    is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
 
     class Meta:
         verbose_name = "Статья"
@@ -56,7 +58,6 @@ class Article(models.Model):
 
 
 class Comment(models.Model):
-
     post = models.ForeignKey(Article, on_delete=models.CASCADE, related_name="comments")
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     body = models.TextField()
@@ -70,6 +71,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment by {self.user}"
-
-    def get_absolute_url(self):
-        return reverse('article', kwargs={"article_slug": self.post.slug})

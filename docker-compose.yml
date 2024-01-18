@@ -1,8 +1,26 @@
 version: "3.8"
 
 services:
+  django:
+    build: .
+    command: sh -c "gunicorn --bind 0.0.0.0:8000 MorphViewBlog.wsgi"
+#    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/MorphView
+      - ./MorphViewBlog/static:/MorphView/static
+    expose:
+      - 8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - default
+
   postgres:
     image: postgres:latest
+    restart: always
     environment:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
@@ -11,6 +29,32 @@ services:
       - "5433:5432"
     networks:
       - default
+    expose:
+      - 5432
+
+  redis:
+    image: redis:latest
+    restart: always
+    entrypoint: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD} --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - /redis/appdata/redis/data:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - default
+    expose:
+      - 6379
+
+  nginx:
+    image: nginx:latest
+    depends_on:
+      - django
+    ports:
+      - "80:80"
+    volumes:
+      - ./MorphViewBlog/static:/var/www/html/static
+      - .nginx-conf-d:/etc/nginx/conf.d
+
 
 networks:
   default:
