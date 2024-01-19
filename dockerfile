@@ -9,8 +9,6 @@ COPY requirements.txt ./
 
 COPY ./MorphViewBlog ./MorphView
 
-RUN pip install gunicorn
-
 RUN pip install -r requirements.txt
 
 WORKDIR /MorphView
