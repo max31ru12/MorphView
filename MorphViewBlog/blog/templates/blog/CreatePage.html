@@ -7,6 +7,16 @@
         {% include 'blog/includes/ArticleForm.html' %}
         <h2 class="form-title">Создать категорию</h2>
         {% include 'blog/includes/CategoryForm.html' %}
+        <h2 class="form-title">Неопубликованные статьи</h2>
+        <div class="category-create-form-container">
+        <ul class="list-group">
+            {% for a in unpublished %}
+            <li class="d-flex justify-content-between align-items-center">
+                <a class="category-link" href="{{ a.get_absolute_url }}">{{ a.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        </div>
     </div>
 </div>
 {% endblock %}

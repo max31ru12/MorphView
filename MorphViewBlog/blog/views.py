@@ -33,6 +33,7 @@ class ArticleCreateView(StaffRequiredMixin, DataMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['category_form'] = CategoryForm()
+        context['unpublished'] = Article.objects.filter(is_published=False)
         mixin_context = super().get_user_context(page_title='Написать статью')
         return {**context, **mixin_context}
 
