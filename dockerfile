@@ -5,11 +5,11 @@ ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update -qy
 
+COPY requirements.txt ./
+
 COPY ./MorphViewBlog ./MorphView
 
 RUN pip install gunicorn
-
-COPY requirements.txt ./
 
 RUN pip install -r requirements.txt
 
