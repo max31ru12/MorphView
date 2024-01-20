@@ -38,7 +38,7 @@ DEBUG = env("DEBUG")
 ALLOWED_HOSTS = [env("DOMAIN_NAME"), "*"]
 
 # Редирект после успешной аутентификации
-# LOGIN_REDIRECT_URL = 'blog'
+LOGIN_REDIRECT_URL = 'blog'
 LOGIN_URL = 'auth/login'
 
 
