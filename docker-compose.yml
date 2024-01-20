@@ -4,7 +4,6 @@ services:
   django:
     build: .
     command: sh -c "gunicorn --bind 0.0.0.0:8000 MorphViewBlog.wsgi"
-#    command: python manage.py runserver 0.0.0.0:8000
     environment:
       - SECRET_KEY=${SECRET_KEY}
       - DEBUG=${DEBUG}
