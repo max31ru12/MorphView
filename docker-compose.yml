@@ -75,6 +75,8 @@ services:
       - ./MorphViewBlog/media/:/var/www/html/media/
     environment:
       - DOMAIN_NAME=${DOMAIN_NAME}
+    networks:
+      - default
 
 
 networks:
