@@ -5,7 +5,7 @@
 
 }
 
-.article-card, .pagination {
+.article-card, .pagination, .article-edit-container {
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 20px;
