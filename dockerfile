@@ -12,5 +12,3 @@ COPY ./MorphViewBlog ./MorphView
 RUN pip install -r requirements.txt
 
 WORKDIR /MorphView
-
-RUN python manage.py collectstatic
