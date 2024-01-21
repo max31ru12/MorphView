@@ -44,6 +44,9 @@ services:
       - default
     expose:
       - 5432
+    # Этот volume для того, чтобы не потерять данные
+    volumes:
+      - ./persistentdata:/var/lib/postgresql/data
 
   redis:
     image: redis:latest
