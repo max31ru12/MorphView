@@ -11,15 +11,6 @@
 
 
 /* Category detail */
-
-.category-detail-container {
-    max-width: 60%; /* Устанавливаем максимальную ширину контейнера для статьи */
-    margin: auto;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-}
-
 .category-article-card {
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -27,7 +18,6 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     margin: 20px auto;
-    /* width: 60%; */
 }
 
 .category-detail-container h1 {
@@ -37,6 +27,10 @@
 
 .category-article-info {
     color: #666;
+}
+
+.category-article-body {
+  line-height: 1.6;
 }
 
 .category-article-card a {

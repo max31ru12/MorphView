@@ -1,0 +1,56 @@
+/* общие стили */
+.form-title {
+    margin: 10px 0;
+}
+
+.create-form-container {
+    margin: auto; /* Центрирование по горизонтали */
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px; /* Закругленные углы */
+    background-color: #fff; /* Белый фон */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+
+/* article edit and article create */
+.article-p {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.article-label {
+    width: 120px;
+    margin-right: 10px; /* Добавьте отступ справа по вашему усмотрению */
+}
+
+.article-p div {
+    margin-left: auto; /* Помещает блок с ошибками в конец .login-p */
+}
+
+/* category form */
+.category-p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.category-label {
+    width: 120px;
+    margin-right: 10px; /* Добавьте отступ справа по вашему усмотрению */
+    font-weight: bold;
+}
+
+.category-p div {
+    margin-left: auto; /* Помещает блок с ошибками в конец .login-p */
+}
+
+/* comment form */
+.comment-container {
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+/* comment form */
