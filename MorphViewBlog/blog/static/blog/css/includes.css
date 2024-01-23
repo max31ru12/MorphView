@@ -1,25 +1,9 @@
-.form-list-container {
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
-
+/* общие стили */
 .form-title {
     margin: 10px 0;
 }
 
-.form-card {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  margin: 20px auto;
-  width: 60%;
-}
-
-
-.category-create-form-container {
-    max-width: 80wv;
+.create-form-container {
     margin: auto; /* Центрирование по горизонтали */
     margin-top: 20px;
     padding: 20px;
@@ -28,17 +12,24 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень */
 }
 
-@media (max-width: 576px) {
-    /* Стили для мобильных устройств */
-    .article-create-form-container {
-        margin-top: 50px; /* Добавление отступа сверху на мобильных устройствах */
-    }
+
+/* article edit and article create */
+.article-p {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
 }
 
-.category-form-title {
-    margin-bottom: 20px;
+.article-label {
+    width: 120px;
+    margin-right: 10px; /* Добавьте отступ справа по вашему усмотрению */
 }
 
+.article-p div {
+    margin-left: auto; /* Помещает блок с ошибками в конец .login-p */
+}
+
+/* category form */
 .category-p {
     display: flex;
     align-items: center;
@@ -55,3 +46,11 @@
     margin-left: auto; /* Помещает блок с ошибками в конец .login-p */
 }
 
+/* comment form */
+.comment-container {
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+/* comment form */

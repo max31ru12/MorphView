@@ -73,13 +73,17 @@ class CategoryListView(DataMixin, ListView):
     paginate_by = 10
 
     def get_queryset(self):
-        cats = cache.get('cats')
-        if cats:
-            queryset = cats
-        else:
+        try:
+            cats = cache.get('cats')
+            if cats:
+                queryset = cats
+            else:
+                queryset = annotate(Category.objects, article_count=Count('article_category')).order_by('-article_count')
+                cache.set('cats', queryset, 3600)
+            return queryset
+        except:
             queryset = annotate(Category.objects, article_count=Count('article_category')).order_by('-article_count')
-            cache.set('cats', queryset, 3600)
-        return queryset
+            return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -138,3 +142,6 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         form.instance.post = get_object(Article.objects, slug=self.kwargs['article_slug'])
         return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('article', kwargs={"article_slug": self.kwargs['article_slug']})

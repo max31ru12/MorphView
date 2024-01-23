@@ -1,8 +1,8 @@
 {% extends 'blog/Base.html' %}
 
 {% block content %}
-<div class="article-detail-container">
-    <h1>{{ article.title }}</h1>
+<div class="article-container">
+    <h2>{{ article.title }}</h2>
     <p class="article-info">{{ article.publish|date:"F d, Y" }} | Категория:
         <a href="{{ article.category.get_absolute_url }}">{{ article.category.name }}</a>
     </p>
@@ -10,13 +10,13 @@
     {% if user.is_staff %}
     <a href="{% url 'edit-article' article.slug %}">Править</a>
     {% endif %}
-</div>
+
+
+
+    {% include 'blog/includes/CommentForm.html' %}
+
 
 <div class="comment-container">
-    {% include 'blog/includes/CommentForm.html' %}
-</div>
-
-<div class="article-detail-container">
     <h2 class="comment-form-title">Комментарии</h2>
     {% for comment in comments %}
     <div class="card">
@@ -33,4 +33,5 @@
     </div>
     {% endfor %}
 </div>
+
 {% endblock %}

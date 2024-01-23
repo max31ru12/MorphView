@@ -3,15 +3,13 @@
 
 {% block content %}
 
-<div class="category-detail-container">
-<h1>Все статьи из категории: {{ category.name }}</h1>
-
+<h2>Все статьи из категории: {{ category.name }}</h2>
 
 {% for f in articles %}
     <div class="category-article-card">
         <h1>{{ f.title }}</h1>
         <p class="category-article-info">{{ f.publish|date:"F d, Y" }}</p>
-        <div class="article-body">{{ f.body|truncatewords:20|safe }}</div>
+        <div class="category-article-body">{{ f.body|truncatewords:20|safe }}</div>
         <div class="d-flex justify-content-between w-100">
             <a href="{{ f.get_absolute_url }}">Read more</a>
             {% if user.is_staff %}
@@ -20,6 +18,5 @@
         </div>
     </div>
 {% endfor %}
-</div>
 
 {% endblock %}

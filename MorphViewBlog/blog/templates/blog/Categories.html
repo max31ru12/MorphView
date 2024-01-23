@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="category-wrapper">
-  <div class="cat-list-container">
+
     <ul class="list-group">
         {% for category in categories %}
           <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -13,8 +13,6 @@
           </li>
         {% endfor %}
     </ul>
-</div>
-
 </div>
 
 {% include "blog/includes/pagination.html" with page=page_obj %}

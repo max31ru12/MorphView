@@ -1,7 +1,6 @@
 {% extends 'blog/Base.html' %}
 
 {% block content %}
-  <div class="article-list-container">
     {% for article in articles %}
       <div class="article-card">
         <h2>{{ article.title }}</h2>
@@ -19,6 +18,5 @@
       </div>
     {% endfor %}
     {% include "blog/includes/pagination.html" with page=page_obj %}
-  </div>
 
 {% endblock %}
