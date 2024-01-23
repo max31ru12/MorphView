@@ -3,12 +3,13 @@
 {% block content %}
     {% for article in articles %}
       <div class="article-card">
-        <h2>{{ article.title }}</h2>
+        <h2 class="thread-article-title">{{ article.title }}</h2>
         <p class="article-info">{{ article.publish|date:"F d, Y" }} | Категория:
           <a href="{{ article.category.get_absolute_url }}">{{ article.category.name }}</a>
         </p>
+        <hr>
         <div class="article-body">{{ article.body|truncatewords:30|safe }}</div>
-        <div class="d-flex justify-content-between w-100">
+        <div class="thread-read-more d-flex justify-content-between w-100">
           <a href="{{ article.get_absolute_url }}">Читать далее</a>
           {% if user.is_staff %}
           <a href="{% url 'edit-article' article.slug %}">Править</a>
