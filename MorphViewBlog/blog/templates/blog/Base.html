@@ -4,12 +4,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'blog/css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'blog/css/article-form.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/article.css' %}">
-    <link rel="stylesheet" href="{% static 'blog/css/category-form.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/categories.css' %}">
-    <link rel="stylesheet" href="{% static 'blog/css/comments.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/includes.css' %}">
 
     <link rel="icon" href="{% static 'blog/favicon/favicon.ico' %}" type="image/x-icon">
     <link rel="shortcut icon" href="{% static 'blog/favicon/favicon.ico' %}" type="image/x-icon">
@@ -56,14 +54,16 @@
         </ol>
     </nav>
 
-    {% block content %}
+    <div class="content-container">
+            {% block content %}
     {% endblock %}
+    </div>
+
 </main>
 
-<!-- Footer -->
 <footer class="text-center text-lg-start bg-body-tertiary text-muted">
-    <!-- Section: Social media -->
-    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <!-- Left -->
         <div class="me-5 d-none d-lg-block">
             <span>Связаться с нами в социальных сетях:</span>
@@ -72,7 +72,7 @@
 
         <!-- Right -->
         <div class="social-container">
-            <a href="/blog" class="me-4 text-reset social">
+            <a href="https://t.me/+GX7ifopDdPw2NDUy" class="me-4 text-reset social">
                 <i class="fab fa-github"><img class="social-img" src="{% static 'blog/svg_icons/telegram.svg' %}"
                                               height="24px"></i>
             </a>
@@ -91,16 +91,11 @@
         </div>
         <!-- Right -->
     </section>
-    <!-- Section: Social media -->
-
-    <!-- Section: Links  -->
+    <div class="footer-container">
     <section class="">
         <div class="container text-center text-md-start mt-5">
-            <!-- Grid row -->
             <div class="row mt-3">
-                <!-- Grid column -->
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <!-- Content -->
                     <h6 class="text-uppercase fw-bold mb-4">
                         <i class="fas fa-gem me-3"></i>Взгляд Морфолога
                     </h6>
@@ -109,9 +104,7 @@
                                                       src="{% static 'blog/svg_icons/WhiteLogo.svg' %}" height="160px"></i>
                     </p>
                 </div>
-                <!-- Grid column -->
 
-                <!-- Grid column -->
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold mb-4">
@@ -120,19 +113,9 @@
                     <p>
                         <a href="#!" class="text-reset"></a>
                     </p>
-                    <p>
-                        <a href="#!" class="text-reset"></a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset"></a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset"></a>
-                    </p>
-                </div>
-                <!-- Grid column -->
 
-                <!-- Grid column -->
+                </div>
+
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold mb-4">
@@ -144,41 +127,27 @@
                     <p>
                         <a href="#!" class="text-reset">Лекции</a>
                     </p>
-                    <p>
-                        <a href="#!" class="text-reset"></a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset"></a>
-                    </p>
                 </div>
-                <!-- Grid column -->
 
-                <!-- Grid column -->
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                    <!-- Links -->
                     <h6 class="text-uppercase fw-bold mb-4">Контакты</h6>
                     <p><i class="fas fa-home me-3"></i> Москва </p>
                     <p>
                         <i class="fas fa-envelope me-3"></i>
                         morphologist.view@gmail.com
                     </p>
-                    <p><i class="fas fa-phone me-3"></i>    </p>
-                    <p><i class="fas fa-print me-3"></i>    </p>
                 </div>
-                <!-- Grid column -->
             </div>
-            <!-- Grid row -->
         </div>
     </section>
-    <!-- Section: Links  -->
+    </div>
 
-    <!-- Copyright -->
     <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-        © 2024 Вгляд Морфолога:
+        © 2024 Вгляд Морфолога
         <a class="text-reset fw-bold" href="https://mdbootstrap.com/"></a>
     </div>
-    <!-- Copyright -->
+
 </footer>
-<!-- Footer -->
+
 
 </body>
