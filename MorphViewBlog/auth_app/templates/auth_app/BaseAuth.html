@@ -14,9 +14,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'base' %}">Главная</a>
               </li>
-                <a class="nav-link" href="{% url 'base' %}">Статьи</a>
+                <a class="nav-link" href="{% url 'thread' %}">Статьи</a>
               <li class="nav-item">
-                <a class="nav-link" href="#">Категории</a>
+                <a class="nav-link" href="{% url 'category-list' %}">Категории</a>
               </li>
         </ul>
         <ul class="nav nav-pills ms-auto left-ul">
@@ -42,7 +42,7 @@
         {% endblock %}
     </main>
 <footer class="text-center text-lg-start bg-body-tertiary text-muted">
-    <!-- Section: Social media -->
+
     <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <!-- Left -->
         <div class="me-5 d-none d-lg-block">
@@ -52,108 +52,82 @@
 
         <!-- Right -->
         <div class="social-container">
-            <a href="/blog" class="me-4 text-reset social">
-                <i class="fab fa-github"><img class="social-img" src="{% static 'blog/svg_icons/telegram.svg' %}" height="24px"></i>
+            <a href="https://t.me/+GX7ifopDdPw2NDUy" class="me-4 text-reset social">
+                <i class="fab fa-github"><img class="social-img" src="{% static 'blog/svg_icons/telegram.svg' %}"
+                                              height="24px"></i>
             </a>
-            <a href="/blog" class="me-4 text-reset social">
-                <i class="fab fa-linkedin"><img class="social-img" src="{% static 'blog/svg_icons/email.svg' %}" height="24px"></i>
+            <a href="mailto:morphologist.view@gmail.com" class="me-4 text-reset social">
+                <i class="fab fa-linkedin"><img class="social-img" src="{% static 'blog/svg_icons/email.svg' %}"
+                                                height="24px"></i>
             </a>
             <a href="https://github.com/max31ru12" class="me-4 text-reset social">
-                <i class="fab fa-github"><img class="social-img" src="{% static 'blog/svg_icons/github.svg' %}" height="24px"></i>
+                <i class="fab fa-github"><img class="social-img" src="{% static 'blog/svg_icons/github.svg' %}"
+                                              height="24px"></i>
             </a>
             <a href="/blog" class="me-4 text-reset social">
-                <i class="fab fa-github"><img class="social-img" src="{% static 'blog/svg_icons/whatsapp.svg' %}" height="24px"></i>
+                <i class="fab fa-github"><img class="social-img" src="{% static 'blog/svg_icons/whatsapp.svg' %}"
+                                              height="24px"></i>
             </a>
         </div>
         <!-- Right -->
     </section>
-    <!-- Section: Social media -->
+    <div class="footer-container">
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <div class="row mt-3">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>Взгляд Морфолога
+                        </h6>
+                        <p>
+                            <i class="fab fa-github"><img alt="Logo" class="logo"
+                                                          src="{% static 'blog/svg_icons/WhiteLogo.svg' %}"
+                                                          height="160px"></i>
+                        </p>
+                    </div>
 
-    <!-- Section: Links  -->
-    <section class="">
-        <div class="container text-center text-md-start mt-5">
-            <!-- Grid row -->
-            <div class="row mt-3">
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <!-- Content -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        <i class="fas fa-gem me-3"></i>Company name
-                    </h6>
-                    <p>
-                        <i class="fab fa-github"><img alt="Logo" class="logo" src="{% static 'blog/svg_icons/WhiteLogo.svg' %}" height="160px"></i>
-                    </p>
-                </div>
-                <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Книги
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset"></a>
+                        </p>
 
-                <!-- Grid column -->
-                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                    <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        Products
-                    </h6>
-                    <p>
-                        <a href="#!" class="text-reset">Angular</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">React</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Vue</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Laravel</a>
-                    </p>
-                </div>
-                <!-- Grid column -->
+                    </div>
 
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                    <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        Useful links
-                    </h6>
-                    <p>
-                        <a href="#!" class="text-reset">Pricing</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Settings</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Orders</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Help</a>
-                    </p>
-                </div>
-                <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Связанное с нами
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Школа</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Лекции</a>
+                        </p>
+                    </div>
 
-                <!-- Grid column -->
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                    <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                    <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
-                    <p>
-                        <i class="fas fa-envelope me-3"></i>
-                        info@example.com
-                    </p>
-                    <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-                    <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">Контакты</h6>
+                        <p><i class="fas fa-home me-3"></i> Москва </p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            morphologist.view@gmail.com
+                        </p>
+                    </div>
                 </div>
-                <!-- Grid column -->
             </div>
-            <!-- Grid row -->
-        </div>
-    </section>
-    <!-- Section: Links  -->
-
-    <!-- Copyright -->
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-        © 2021 Copyright:
-        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </section>
     </div>
-    <!-- Copyright -->
+
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2024 Вгляд Морфолога
+        <a class="text-reset fw-bold" href="https://mdbootstrap.com/"></a>
+    </div>
+
 </footer>
-<!-- Footer -->
 
 </body>
