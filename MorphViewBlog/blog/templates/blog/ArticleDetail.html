@@ -2,13 +2,14 @@
 
 {% block content %}
 <div class="article-container">
-    <h2>{{ article.title }}</h2>
+    <h2 class="article-detail-title">{{ article.title }}</h2>
     <p class="article-info">{{ article.publish|date:"F d, Y" }} | Категория:
         <a href="{{ article.category.get_absolute_url }}">{{ article.category.name }}</a>
     </p>
+    <hr>
     <div class="article-body">{{ article.body|safe }}</div>
     {% if user.is_staff %}
-    <a href="{% url 'edit-article' article.slug %}">Править</a>
+    <a class="article-detail-edit" href="{% url 'edit-article' article.slug %}">Править</a>
     {% endif %}
 
 
@@ -19,7 +20,7 @@
 <div class="comment-container">
     <h2 class="comment-form-title">Комментарии</h2>
     {% for comment in comments %}
-    <div class="card">
+    <div class="card article-comment">
         <div class="card-header">
             {{ comment.created }}
         </div>

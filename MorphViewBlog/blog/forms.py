@@ -35,6 +35,6 @@ class CommentForm(forms.ModelForm):
         }
 
     body = forms.CharField(
-        widget=forms.Textarea(attrs={'rows': 3, 'cols': 60}), label='',
+        widget=forms.Textarea(attrs={'rows': 5, 'cols': 80}), label='',
         # Другие параметры вашего поля...
     )

@@ -50,18 +50,28 @@
       margin: 20px auto;
     }
 
-    .thread-article-title {
+    .thread-article-title, .article-detail-title {
         font-size: 60px;
     }
     .article-info {
         font-size: 40px;
     }
     .article-body {
-        font-size: 36px;
+        font-size: 40px;
     }
-
     .thread-read-more {
         font-size: 40px;
         font-weight: bold;
     }
+    .article-detail-edit {
+        font-size: 40px;
+        font-weight: bold;
+    }
+    .article-comment {
+        margin: 20px 0;
+    }
+    .blockquote {
+        font-size: 36px;
+    }
+
 }
