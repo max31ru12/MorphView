@@ -18,11 +18,11 @@
     {% for article in latest %}
     <div class="card">
         <h5 class="card-header">
-            <span>Категория: <a href="{{ article.category.get_absolute_url }}">{{ article.category }}</a></span>
+            <span class="card-header-cat-name">Категория: <a href="{{ article.category.get_absolute_url }}">{{ article.category }}</a></span>
         </h5>
         <div class="card-body">
             <h5 class="card-title">{{ article.title }}</h5>
-            <p class="card-text">{{ article.body|truncatewords:30|safe }}</p>
+            <div class="card-text">{{ article.body|truncatewords:30|safe }}</div>
             <a href="{{ article.get_absolute_url }}" class="btn btn-primary">Читать далее</a>
         </div>
     </div>
