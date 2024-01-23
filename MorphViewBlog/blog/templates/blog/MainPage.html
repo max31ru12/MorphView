@@ -9,7 +9,7 @@
         <hr class="my-4">
         <p>Лекции, семинары</p>
         <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Узнать больше</a>
+            <a class="banner-button btn btn-primary btn-lg" href="#" role="button">Узнать больше</a>
         </p>
     </div>
 
@@ -23,7 +23,7 @@
         <div class="card-body">
             <h5 class="card-title">{{ article.title }}</h5>
             <div class="card-text">{{ article.body|truncatewords:30|safe }}</div>
-            <a href="{{ article.get_absolute_url }}" class="btn btn-primary">Читать далее</a>
+            <a href="{{ article.get_absolute_url }}" class="continue-button btn btn-primary">Читать далее</a>
         </div>
     </div>
     {% endfor %}
@@ -37,7 +37,7 @@
         </h5>
         <div class="card-body">
             <h5 class="cat-card-title card-title">Статей в категории: {{ category.article_category.count }}</h5>
-            <a href="{{ category.get_absolute_url }}" class="btn btn-primary">Перейти</a>
+            <a href="{{ category.get_absolute_url }}" class="continue-button btn btn-primary">Перейти</a>
         </div>
     </div>
     {% endfor %}

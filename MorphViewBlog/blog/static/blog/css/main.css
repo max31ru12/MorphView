@@ -72,7 +72,7 @@
     }
 
     .card-header {
-        font-size: 50px;
+        font-size: 40px;
 
     }
     .card-title {
@@ -84,10 +84,13 @@
         font-size: 40px;
     }
 
-    .btn-primary {
+    .banner-button, .continue-button {
         margin: 20px 0;
         font-size: 2.75rem;
+        border-radius: 0.5rem;
     }
+
+
 
 }
 
