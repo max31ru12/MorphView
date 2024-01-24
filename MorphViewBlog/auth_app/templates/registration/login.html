@@ -17,15 +17,18 @@
                     {% csrf_token %}
 
                     {% for f in form %}
-                    <p class="login-p"><label class="login-label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</p>
+                    <label class="login-label" for="{{ f.id_for_label }}">{{ f.label }}</label>
+                    <p class="login-p">{{ f }}</p>
                     <div>{{ f.errors }}</div>
                     {% endfor %}
-
-                    <button type="submit" class="btn btn-primary">Подтвердить</button>
+                    <div class="button-container">
+                        <button type="submit" class="login-button btn-primary">Подтвердить</button>
+                    </div>
                 </div>
+
             </form>
 
-            <a href="{% url 'auth_app:password_reset' %}">Забыли пароль?</a>
+            <a class="forgot-password" href="{% url 'auth_app:password_reset' %}">Забыли пароль?</a>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
