@@ -85,8 +85,7 @@
 
     .login-form-container {
         max-width: 800px;
-        margin: auto; /* Центрирование по горизонтали */
-        margin-top: 12vh;
+        margin: 10vh auto;
         padding: 20px;
         border-radius: 10px; /* Закругленные углы */
         background-color: #fff; /* Белый фон */
@@ -138,6 +137,7 @@
     }
 
     .login-label {
+        min-width: 200px;
         margin-bottom: 30px;
         font-size: 50px;
         font-weight: bold;
@@ -160,6 +160,12 @@
 
     .reset-info-title {
         margin-bottom: 20px;
+    }
+
+    .reset-password-title {
+        font-size: 70px;
+        margin-bottom: 20px;
+        color: #666;
     }
 
 }
