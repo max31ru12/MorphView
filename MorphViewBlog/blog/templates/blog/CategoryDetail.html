@@ -1,0 +1,22 @@
+{% extends 'blog/Base.html' %}
+
+
+{% block content %}
+
+<h2 class="category-detail-title">Все статьи из категории: {{ category.name }}</h2>
+
+{% for f in articles %}
+    <div class="category-article-card">
+        <h2 class="category-detail-article-title">{{ f.title }}</h2>
+        <p class="category-detail-article-info">{{ f.publish|date:"F d, Y" }}</p>
+        <div class="category-detail-article-body">{{ f.body|truncatewords:20|safe }}</div>
+        <div class="d-flex justify-content-between w-100">
+            <a class="category-detail-read-more" href="{{ f.get_absolute_url }}">Read more</a>
+            {% if user.is_staff %}
+                <a class="category-detail-edit" href="{% url 'edit-article' f.slug %}">Править</a>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}

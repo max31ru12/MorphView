@@ -1,0 +1,45 @@
+{% extends 'blog/Base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="jumbotron">
+        <h1 class="display-4">Взгляд Морфолога</h1>
+        <p class="lead">Проект со статьями для врачей-патологоанатомов</p>
+        <hr class="my-4">
+        <p>Лекции, семинары</p>
+        <p class="lead">
+            <a class="banner-button btn btn-primary btn-lg" href="#" role="button">Узнать больше</a>
+        </p>
+    </div>
+
+    <h1 class="main-card-title">Последние статьи</h1>
+
+    {% for article in latest %}
+    <div class="card">
+        <h5 class="card-header">
+            <span class="card-header-cat-name">Категория: <a href="{{ article.category.get_absolute_url }}">{{ article.category }}</a></span>
+        </h5>
+        <div class="card-body">
+            <h5 class="card-title">{{ article.title }}</h5>
+            <div class="card-text">{{ article.body|truncatewords:30|safe }}</div>
+            <a href="{{ article.get_absolute_url }}" class="continue-button btn btn-primary">Читать далее</a>
+        </div>
+    </div>
+    {% endfor %}
+
+    <h1 class="main-card-title">Популярные категории</h1>
+
+    {% for category in popular %}
+    <div class="card">
+        <h5 class="card-header">
+            <span><a href="{{ article.category.get_absolute_url }}">{{ category.name }}</a></span>
+        </h5>
+        <div class="card-body">
+            <h5 class="cat-card-title card-title">Статей в категории: {{ category.article_category.count }}</h5>
+            <a href="{{ category.get_absolute_url }}" class="continue-button btn btn-primary">Перейти</a>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}

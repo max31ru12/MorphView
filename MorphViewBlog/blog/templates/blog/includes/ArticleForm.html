@@ -1,0 +1,15 @@
+<div class="create-form-container">
+<form action="" method="post">
+    <div class="form-group article-form-container">
+        {{ form.media }}
+        {% csrf_token %}
+
+        {% for f in form %}
+        <p class="article-p article-p"><label class="article-label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</p>
+        <div>{{ f.errors }}</div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Подтвердить</button>
+    </div>
+
+</form>
+</div>
