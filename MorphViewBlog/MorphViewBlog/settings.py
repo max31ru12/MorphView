@@ -101,8 +101,6 @@ DATABASES = {
         'NAME': env("DB_NAME"),
         'USER': env("DB_USER"),
         'PASSWORD': env("DB_PASSWORD"),
-        # 'HOST': 'localhost',
-        # 'PORT': 5433,
         'HOST': env("DB_HOST"),
         'PORT': env("DB_PORT"),
     }
@@ -111,6 +109,7 @@ DATABASES = {
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        # "LOCATION": f"redis://:{env('REDIS_PASSWORD')}@{env('REDIS_HOST')}:6379/1",
         "LOCATION": f"redis://:{env('REDIS_PASSWORD')}@{env('REDIS_HOST')}:6379/0",
     }
 }

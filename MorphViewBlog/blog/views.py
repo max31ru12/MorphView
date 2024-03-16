@@ -1,19 +1,21 @@
 import os
 import sys
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import Count
 from django.urls import reverse_lazy
 
-from .services import latest_articles, popular_categories, article_to_edit, get_comments, category_articles, \
-    unpublished_articles, category_with_count, article_thread
+from .services import latest_articles, popular_categories, \
+    article_to_edit, get_comments, category_articles, unpublished_articles, \
+    category_with_count, article_thread
 
-sys.path.append(os.path.join(os.getcwd(), '..'))
-from services import *
+from services import get_object
 from utils import DataMixin, StaffRequiredMixin
 from .forms import ArticleAdminForm, CategoryForm, CommentForm
 from django.views.generic import TemplateView, CreateView, ListView, DetailView, UpdateView
-from .models import *
+from .models import Article, Category
 from django.core.cache import cache
+
+
+sys.path.append(os.path.join(os.getcwd(), '..'))
 
 
 class MainPage(DataMixin, TemplateView):
@@ -49,11 +51,15 @@ class ArticleEditView(StaffRequiredMixin, DataMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         mixin_context = super().get_user_context(page_title='Править статью')
-        context["form"] = article_to_edit(get_object(Article.objects, slug=self.object.slug))
+        context["form"] = article_to_edit(get_object(Article.objects,
+                                                     slug=self.object.slug))
         return {**context, **mixin_context}
 
     def get_success_url(self):
-        return reverse_lazy('article', kwargs={"article_slug": self.object.slug})
+        return reverse_lazy(
+            'article',
+            kwargs={"article_slug": self.object.slug}
+        )
 
 
 class CategoryCreateView(CreateView):
@@ -78,7 +84,8 @@ class CategoryListView(DataMixin, ListView):
                 queryset = category_with_count()
                 cache.set('cats', queryset, 3600)
             return queryset
-        except:
+        except Exception as ex:
+            print(ex)
             queryset = category_with_count()
             return queryset
 
@@ -136,8 +143,12 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         # редирект происходит в model.get_absolute_url на страницу поста
         form.instance.user = self.request.user
-        form.instance.post = get_object(Article.objects, slug=self.kwargs['article_slug'])
+        form.instance.post = get_object(Article.objects,
+                                        slug=self.kwargs['article_slug'])
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('article', kwargs={"article_slug": self.kwargs['article_slug']})
+        return reverse_lazy(
+            'article',
+            kwargs={"article_slug": self.kwargs['article_slug']}
+        )

@@ -18,6 +18,7 @@ services:
   redis:
     image: redis:latest
     restart: always
+
     entrypoint: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD} --maxmemory 256mb --maxmemory-policy allkeys-lru
     volumes:
       - /redis/appdata/redis/data:/data
@@ -27,5 +28,7 @@ services:
       - default
     depends_on:
       - postgres
+    ports:
+      - "6379:6379"
     expose:
       - 6379
